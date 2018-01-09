@@ -4,8 +4,8 @@ var bodyParser = require('body-parser');
 var app = express();
 
 app.get('/sum', function (req, res) {
-    var x = req.query.x;
-    var y = req.query.y;
+    var x = parseInt(req.query.x);
+    var y = parseInt(req.query.y);
     if (Number.isInteger(x) && Number.isInteger(y) )
         return x + y;
     else
@@ -16,8 +16,8 @@ app.get('/sum', function (req, res) {
 })
 
 app.get('/multiply', function (req, res) {
-    var x = req.query.x;
-    var y = req.query.y;
+    var x = parseInt(req.query.x);
+    var y = parseInt(req.query.y);
     if (Number.isInteger(x) && Number.isInteger(y) )
         return x * y;
     else
@@ -28,8 +28,8 @@ app.get('/multiply', function (req, res) {
 })
 
 app.get('/subtract', function (req, res) {
-    var x = req.query.x;
-    var y = req.query.y;
+    var x = parseInt(req.query.x);
+    var y = parseInt(req.query.y);
     if (Number.isInteger(x) && Number.isInteger(y) )
         return x - y;
     else
@@ -40,8 +40,8 @@ app.get('/subtract', function (req, res) {
 })
 
 app.get('/divide', function (req, res) {
-    var x = req.query.x;
-    var y = req.query.y;
+    var x = parseInt(req.query.x);
+    var y = parseInt(req.query.y);
     if (Number.isInteger(x) && Number.isInteger(y) )
     {
         if(y != 0)
