@@ -6,30 +6,56 @@ var app = express();
 app.get('/sum', function (req, res) {
     var x = req.query.x;
     var y = req.query.y;
-    return x + y;
+    if (Number.isInteger(x) && Number.isInteger(y) )
+        return x + y;
+    else
+        {
+            res.sendStatus(400);
+            return "Almeno uno degli input non è un numero intero";
+        }
 })
 
 app.get('/multiply', function (req, res) {
     var x = req.query.x;
     var y = req.query.y;
-    return x * y;
+    if (Number.isInteger(x) && Number.isInteger(y) )
+        return x * y;
+    else
+    {
+        res.sendStatus(400);
+        return "Almeno uno degli input non è un numero intero";
+    }
 })
 
 app.get('/subtract', function (req, res) {
     var x = req.query.x;
     var y = req.query.y;
-    return x - y;
+    if (Number.isInteger(x) && Number.isInteger(y) )
+        return x - y;
+    else
+    {
+        res.sendStatus(400);
+        return "Almeno uno degli input non è un numero intero";
+    }
 })
 
 app.get('/divide', function (req, res) {
     var x = req.query.x;
     var y = req.query.y;
-    if (y != 0)
-        return x / y;
-    else
+    if (Number.isInteger(x) && Number.isInteger(y) )
+    {
+        if(y != 0)
+            return x / y;
+        else
         {
             res.sendStatus(400);
             return "Impossibile dividere per 0";
+        }
+    }
+    else
+        {
+            res.sendStatus(400);
+            return "Almeno uno degli input non è un numero intero";
         }
 })
 
