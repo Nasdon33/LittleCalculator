@@ -15,19 +15,22 @@ app.get('/multiply', function (req, res) {
     return x * y;
 })
 
-app.get('/subtraction', function (req, res) {
+app.get('/subtract', function (req, res) {
     var x = req.query.x;
     var y = req.query.y;
     return x - y;
 })
 
-app.get('/division', function (req, res) {
+app.get('/divide', function (req, res) {
     var x = req.query.x;
     var y = req.query.y;
     if (y != 0)
         return x / y;
     else
-        return "Impossibile dividere per 0";
+        {
+            res.sendStatus(400);
+            return "Impossibile dividere per 0";
+        }
 })
 
 app.set('port', (process.env.PORT || 8080));
