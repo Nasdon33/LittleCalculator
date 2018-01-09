@@ -1,0 +1,177 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "Calculator"
+  description: Easy calculation with simple operators
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Swagger API Team
+    email: foo@example.com
+    url: http://exams.jointresearch.net
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+host: polar-reaches-96805.herokuapp.com
+basePath: /
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /sum:
+    get:
+      description: Return the sum of the two input numbers
+      operationId: getSum
+      parameters:
+        - name: x
+          in: query
+          description: Value of the first input number
+          required: true
+          type: int
+          format: int32
+          example: 17
+        - name: y
+          in: query
+          description: Value of the first second number
+          required: true
+          type: int
+          format: int32
+          example: 15
+      responses:
+        200:
+          description: Result of the sum
+          content:
+            text/plain:
+              schema:
+                type: int
+                format: int32
+                example: 32
+        400:
+          description: The input must be two integer numbers
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /multiply:
+    get:
+      description: Return the multiplication of the two input numbers
+      operationId: getMultiply
+      parameters:
+        - name: x
+          in: query
+          description: Value of the first input number
+          required: true
+          type: int
+          format: int32
+          example: 3
+        - name: y
+          in: query
+          description: Value of the first second number
+          required: true
+          type: int
+          format: int32
+          example: 5
+      responses:
+        200:
+          description: Result of the multiplication
+          content:
+            text/plain:
+              schema:
+                type: int
+                format: int32
+                example: 15
+        400:
+          description: The input must be two integer numbers
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /subtract:
+    get:
+      description: Return the subtraction of the two input numbers
+        operationId: getSubract
+        parameters:
+          - name: x
+            in: query
+            description: Value of the first input number
+            required: true
+            type: int
+            format: int32
+            example: 10
+          - name: y
+            in: query
+            description: Value of the second input number
+            required: true
+            type: int
+            format: int32
+            example: 2
+        responses:
+          200:
+            description: Result of the subtraction
+            content:
+              text/plain:
+                schema:
+                  type: int
+                  format: int32
+                  example: 8
+          400:
+            description: The input must be two integer numbers
+            schema:
+              $ref: '#/definitions/Error'
+          default:
+            description: unexpected error
+            schema:
+              $ref: '#/definitions/Error'
+  /divide:
+    get:
+      description: Return the division of the two input numbers
+      operationId: getDivide
+      parameters:
+        - name: x
+          in: query
+          description: Value of the first input number
+          required: true
+          type: int
+          format: int32
+          example: 8
+        - name: y
+          in: query
+          description: Value of the second input number
+          required: true
+          type: int
+          format: int32
+          example: 2
+      responses:
+        200:
+          description: Result of the division
+          content:
+            text/plain:
+              schema:
+                type: int
+                format: int32
+                example: 4
+        400:
+          description: The input must be two integer numbers and the second can't be 0
+          schema:
+            $ref: '#/definitions/Error'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Error:
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
