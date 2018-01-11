@@ -4,22 +4,23 @@ var bodyParser = require('body-parser');
 var app = express();
 
 app.get('/sum', function (req, res) {
-    var x = parseInt(req.query.x);
-    var y = parseInt(req.query.y);
+    var x = parseFloat(req.query.x);
+    var y = parseFloat(req.query.y);
     if (Number.isInteger(x) && Number.isInteger(y) )
-        return x + y;
+    {
+        return res.send({ value: x + y });
+    }
     else
         {
             res.sendStatus(400);
-            return "Almeno uno degli input non è un numero intero";
         }
 })
 
 app.get('/multiply', function (req, res) {
-    var x = parseInt(req.query.x);
-    var y = parseInt(req.query.y);
+    var x = parseFloat(req.query.x);
+    var y = parseFloat(req.query.y);
     if (Number.isInteger(x) && Number.isInteger(y) )
-        return x * y;
+        return res.send({ value: x * y });
     else
     {
         res.sendStatus(400);
@@ -28,10 +29,10 @@ app.get('/multiply', function (req, res) {
 })
 
 app.get('/subtract', function (req, res) {
-    var x = parseInt(req.query.x);
-    var y = parseInt(req.query.y);
+    var x = parseFloat(req.query.x);
+    var y = parseFloat(req.query.y);
     if (Number.isInteger(x) && Number.isInteger(y) )
-        return x - y;
+        return res.send({ value: x - y });
     else
     {
         res.sendStatus(400);
@@ -40,12 +41,12 @@ app.get('/subtract', function (req, res) {
 })
 
 app.get('/divide', function (req, res) {
-    var x = parseInt(req.query.x);
-    var y = parseInt(req.query.y);
+    var x = parseFloat(req.query.x);
+    var y = parseFloat(req.query.y);
     if (Number.isInteger(x) && Number.isInteger(y) )
     {
         if(y != 0)
-            return x / y;
+            return res.send({ value: x / y });
         else
         {
             res.sendStatus(400);
